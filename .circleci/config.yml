@@ -1,5 +1,3 @@
-version: 2.1
-
 jobs:
     build_and_push:
         docker:
@@ -9,11 +7,11 @@ jobs:
             - setup_remote_docker:
                 version: 19.03.13
             - run:
-                name: install pieTest
-                command: pip install pytest 
+                name: Install pytest Dependency
+                command: pip install pytest
             - run:
-                name: run testcase
-                command: pytest test.py 
+                name: Run tests
+                command: pytest test.py
             - run:
                 name: Docker build
                 command: docker build -t $DOCKERHUB_USERNAME/myapp:${CIRCLE_SHA1} .
